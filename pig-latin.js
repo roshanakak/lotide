@@ -21,5 +21,3 @@ for (let j = 2; j < args.length; j++) {
 
 }
 console.log(output);
-
-
