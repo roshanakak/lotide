@@ -10,7 +10,7 @@ const eqArrays = function(firstArray, secondArray) {
     }
   }
   return output;
-}
+};
 
 const assertArraysEqual = function(firstArray, secondArray) {
   const Pass = String.fromCodePoint(0x1F601);
@@ -19,8 +19,8 @@ const assertArraysEqual = function(firstArray, secondArray) {
     console.log(`${Pass} Assertion Passed: ${firstArray} === ${secondArray}`);
   } else {
     console.log(`${Fail} Assertion Failed: ${firstArray} !== ${secondArray}`);
-  }  
-}
+  }
+};
 
 
 assertArraysEqual([1, 2, 3], [1, 2, 3]), true;
