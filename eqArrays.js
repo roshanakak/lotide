@@ -1,32 +1,31 @@
 const assertEqual = function(actual, expected) {
+  const Pass = String.fromCodePoint(0x1F601);
+  const Fail = String.fromCodePoint(0x1F614);
   if (actual === expected) {
-    return true;
+    console.log(`${Pass}Assertion Passed: ${actual} === ${expected}`);
   } else {
-    return false;
+    console.log(`${Fail}Assertion Failed: ${actual} !== ${expected}`);
   }
 };
 
 
 const eqArrays = function(firstArray, secondArray) {
   let output = true;
-  if (!assertEqual(firstArray.length, secondArray.length)) {
+  if (firstArray.length !== secondArray.length) {
     output = output && false;
   } else {
     for (let i = 0; i < firstArray.length; i++) {
-      if (!assertEqual(firstArray[i], secondArray[i])) {
+      if (firstArray[i] !== secondArray[i]) {
         output = output && false;
       }
     }
   }
-  if (output) {
-    console.log('The two arrays are equal');
-  } else {
-    console.log('The two arrays are not equal');
-  }
-};
+  return output;
+}
 
-eqArrays([1, 2, 3], [1, 2, 3]); // => true
-eqArrays([1, 2, 3], [3, 2, 1]); // => false
+assertEqual(eqArrays([1, 2, 3], [1, 2, 3]), true);
+assertEqual(eqArrays([1, 2, 3], [3, 2, 1]), false);
 
-eqArrays(["1", "2", "3"], ["1", "2", "3"]); // => true
-eqArrays(["1", "2", "3"], ["1", "2", 3]); // => false
+assertEqual(eqArrays(["1", "2", "3"], ["1", "2", "3"]), true);
+assertEqual(eqArrays(["1", "2", "3"], ["1", "2", 3]), false);
+
