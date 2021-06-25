@@ -2,10 +2,10 @@ const assertEqual = function(actual, expected) {
   const Pass = String.fromCodePoint(0x1F601);
   const Fail = String.fromCodePoint(0x1F614);
   if (actual === expected) {
-    //console.log(`${Pass} Assertion Passed: ${actual} === ${expected}`);
+    console.log(`${Pass} Assertion Passed: ${actual} === ${expected}`);
     return true;
   } else {
-    //console.log(`${Fail} Assertion Failed: ${actual} !== ${expected}`);
+    console.log(`${Fail} Assertion Failed: ${actual} !== ${expected}`);
     return false;
   }
 };
@@ -22,14 +22,6 @@ const eqArrays = function(firstArray, secondArray) {
     }
   }
   return output;
-};
-
-const findKeyByValue = function(object, value) {
-  for (const key of Object.keys(object)) {
-    if (assertEqual(object[key] , value))
-      return key;
-  }
-  return undefined;
 };
 
 const eqObjects = function(object1, object2) {
