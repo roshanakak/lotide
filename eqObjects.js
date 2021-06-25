@@ -16,7 +16,9 @@ const eqArrays = function(firstArray, secondArray) {
     output = output && false;
   } else {
     for (let i = 0; i < firstArray.length; i++) {
-      if (firstArray[i] !== secondArray[i]) {
+      if (Array.isArray(firstArray[i]) && Array.isArray(secondArray[i]) && !eqObjects(firstArray[i], secondArray[i])) {
+        output = output && false;
+      } else if ((!Array.isArray(firstArray[i]) || !Array.isArray(secondArray[i])) && firstArray[i] !== secondArray[i]) {
         output = output && false;
       }
     }
@@ -56,7 +58,12 @@ const eqObjects = function(object1, object2) {
 // const cd2 = { c: "1", d: ["2", 3, 4] };
 // console.log(assertEqual(eqObjects(cd, cd2), false));
 
-console.log(eqObjects({ a: { z: 1 }, b: 2 }, { a: { z: 1 }, b: 2 })); // => true
+// console.log(eqObjects({ a: { z: 1 }, b: 2 }, { a: { z: 1 }, b: 2 })); // => true
 
-console.log(eqObjects({ a: { y: 0, z: 1 }, b: 2 }, { a: { z: 1 }, b: 2 })); // => false
-console.log(eqObjects({ a: { y: 0, z: 1 }, b: 2 }, { a: 1, b: 2 })); // => false
+// console.log(eqObjects({ a: { y: 0, z: 1 }, b: 2 }, { a: { z: 1 }, b: 2 })); // => false
+// console.log(eqObjects({ a: { y: 0, z: 1 }, b: 2 }, { a: 1, b: 2 })); // => false
+
+console.log(eqArrays([[2, 3], [4]], [[2, 3], [4]])); // => true
+
+console.log(eqArrays([[2, 3], [4]], [[2, 3], [4, 5]])); // => false
+console.log(eqArrays([[2, 3], [4]], [[2, 3], 4])); // => false
