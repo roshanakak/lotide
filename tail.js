@@ -13,5 +13,4 @@ const tail = function(arr) {
   return arr.slice(1);
 };
 
-assertEqual(tail([5,6,7])[0], 6);
-assertEqual(tail([5,6,7])[1], 7);
+module.exports = tail;
